@@ -1,5 +1,12 @@
 html {
-	font-size: 11px;
+	font-size: 13px;
 	font-family: 'Roboto', sans-serif;
 	background-color: #e0e0e0;
+}
+h1 {
+	font-size: 32px;
+	margin: 0;
+	padding: 10px 0;    
+	color: #202020;
+	font-family: 'Roboto', sans-serif;
 }
