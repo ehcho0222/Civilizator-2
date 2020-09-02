@@ -4,3 +4,4 @@
 
 A revamped version of Cividlization 2 by to_change_later
 지금은 백멍이 귀엽다
+site: https://dazzling-swirles-99d409.netlify.app/
