@@ -8,11 +8,20 @@ p {
 	color: #c0c0c0;
 	font-family: 'Roboto', sans-serif;
 }
+span {
+	font-size: 12px;
+	color:#202020;
+	background-color:#ffff00;
+	border:1px solid #ffffff;
+	font-family: 'Roboto', sans-serif;
+}
 h1 {
 	font-size: 32px;
+	width: 1000px;
 	margin: 0;
 	padding: 10px 0;    
 	color: #ffffff;
+	border: 2px solid #ffffff;
 	font-family: 'Roboto', sans-serif;
 }
 h2 {
@@ -37,4 +46,10 @@ a:link {
 }
 a:visited {
   color: #e0e0e0;
+}
+.special {
+	color: #ffe000;
+}
+.box {
+  width: 600px;
 }
