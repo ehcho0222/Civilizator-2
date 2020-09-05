@@ -10,15 +10,14 @@ span {
 	font-size: 12px;
 	color:#202020;
 	background-color:#ffff00;
-	border:1px solid white;
+	border:1px solid #e0e0e0;
 }
 h1 {
 	font-size: 32px;
-	width: 1000px;
 	margin: 0;
 	padding: 10px 0;    
 	color: #ffffff;
-	border: 2px solid white;
+	border: 2px solid #e0e0e0;
 }
 h2 {
 	font-size: 24px;
@@ -41,20 +40,55 @@ a:link {
 a:visited {
   color: #e0e0e0;
 }
-.special {
-	color: #ffe000;
-}
 .resources {
   width: 380px;
   height: 500px;
   margin: 5px;
   padding: 5px;
-  border: 3px solid white;
+  border: 3px solid #e0e0e0;
   overflow: auto;
+}
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #e0e0e0;
+}
+thead th:nth-child(1) {
+  width: 25%;
+}
+
+thead th:nth-child(2) {
+  width: 25%;
+}
+
+thead th:nth-child(3) {
+  width: 25%;
+}
+
+thead th:nth-child(4) {
+  width: 25%;
+}
+tbody tr:nth-child(odd) {
+  background-color: #404040;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #202020;
 }
 caption {
 	color: #e0e0e0;
 }
+tbody td {
+	text-align: center;
+}
 th, td {
 	color: #e0e0e0;
+	padding: 3px;
+}
+.special {
+	color: #ffe000;
+}
+.basic {
+	color: #4080ff;
 }
