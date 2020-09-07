@@ -67,9 +67,9 @@ function displayResources() {
 	curFood.textContent = Math.round(food);
 	maxFood.textContent = Math.round(foodthr);
 	if (foodps >= 0) {
-		foodIncome.textContent = foodps * Math.min(1, foodthr / food);
+		foodIncome.textContent = Math.round(100 * foodps * Math.min(1, foodthr / food)) / 100;
 	} else {
-		foodIncome.textContent = foodps;
+		foodIncome.textContent = Math.round(foodps * 100) / 100;
 	}
 	if (foodps < 0) {
 		foodIncome.style.color = 'red';
@@ -90,7 +90,7 @@ function displayResources() {
 	
 	curWood.textContent = Math.round(wood);
 	maxWood.textContent = Math.round(woodCap);
-	woodIncome.textContent = woodps;
+	woodIncome.textContent = Math.round(woodps * 100) / 100;
 	if (wood >= woodCap * 0.95) {
 		curWood.style.color = '#ffe000';
 		maxWood.style.color = '#ffe000';
@@ -101,7 +101,7 @@ function displayResources() {
 	
 	curStone.textContent = Math.round(stone);
 	maxStone.textContent = Math.round(stoneCap);
-	stoneIncome.textContent = stoneps;
+	stoneIncome.textContent = Math.round(stoneps * 100) / 100;
 	if (stone >= stoneCap * 0.95) {
 		curStone.style.color = '#ffe000';
 		maxStone.style.color = '#ffe000';
@@ -109,7 +109,7 @@ function displayResources() {
 		curStone.style.color = '#e0e0e0';
 		maxStone.style.color = '#e0e0e0';
 	}
-	scienceIncome.textContent = science;
+	scienceIncome.textContent = Math.round(science * 100) / 100;
 }
 setInterval(incrementResources, 250);
 setInterval(displayResources, 250);
