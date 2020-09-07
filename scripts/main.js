@@ -29,8 +29,14 @@ var maxWood = document.querySelector('.maxwood');
 maxWood.textContent = woodCap;
 var woodIncome = document.querySelector('.woodincome');
 woodIncome.textContent = woodps;
+var curStone = document.querySelector('.curstone');
+curStone.textContent = stone;
+var maxStone = document.querySelector('.maxstone');
+maxStone.textContent = stoneCap;
+var stoneIncome = document.querySelector('.stoneincome');
+stoneIncome.textContent = stoneps;
 function incrementResources() {
-	food += foodps;
+	food += foodps / 4;
 	if (food >= foodthr && pop < popCap) {
 		food *= keepRatio;
 		pop += 1;
@@ -47,7 +53,7 @@ function incrementResources() {
 		curPop.style.color = '#e0e0e0';
 		maxPop.style.color = '#e0e0e0';
 	}
-	wood += woodps;
+	wood += woodps / 4;
 	if (wood > woodCap) {
 		wood = woodCap;
 	}
@@ -61,9 +67,19 @@ function incrementResources() {
 		curWood.style.color = '#e0e0e0';
 		maxWood.style.color = '#e0e0e0';
 	}
-	stone += stoneps;
+	stone += stoneps / 4;
 	if (stone > stoneCap) {
 		stone = stoneCap;
 	}
+	curStone.textContent = stone;
+	maxStone.textContent = stoneCap;
+	stoneIncome.textContent = stoneps;
+	if (stone >= stoneCap * 0.95) {
+		curStone.style.color = '#ffe000';
+		maxStone.style.color = '#ffe000';
+	} else {
+		curStone.style.color = '#e0e0e0';
+		maxStone.style.color = '#e0e0e0';
+	}
 }
-setInterval(incrementResources, 1000);
+setInterval(incrementResources, 250);
