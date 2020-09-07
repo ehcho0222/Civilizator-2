@@ -8,7 +8,7 @@ var stone = 0;
 var stoneps = 1;
 var stoneCap = 100;
 var pop = 1;
-var popCap = 6;
+var popCap = 12;
 var science = 0.1;
 var keepRatio = 0.0;
 var era = document.querySelector('h1');
@@ -38,16 +38,48 @@ stoneIncome.textContent = stoneps;
 var scienceIncome = document.querySelector('.science');
 scienceIncome.textContent = science;
 function incrementResources() {
-	food += foodps / 4;
+	if (foodps < 0) {
+		food += foodps / 4;
+	} else if (food <= foodthr) {
+		food += foodps / 4;
+	} else {
+		food += (foodps / 4) * (foodthr / food);
+	}
 	if (food >= foodthr && pop < popCap) {
 		food *= keepRatio;
 		pop += 1;
 	}
+	foodthr = Math.pow(1.5, pop) * 66.67;
+	
+	wood += woodps / 4;
+	if (wood > woodCap) {
+		wood = woodCap;
+	}
+	
+	stone += stoneps / 4;
+	if (stone > stoneCap) {
+		stone = stoneCap;
+	}
+}
+function displayResources() {
 	curPop.textContent = pop;
 	maxPop.textContent = popCap;
 	curFood.textContent = Math.round(food);
 	maxFood.textContent = Math.round(foodthr);
-	foodIncome.textContent = foodps;
+	if (foodps >= 0) {
+		foodIncome.textContent = foodps * Math.min(1, foodthr / food);
+	} else {
+		foodIncome.textContent = foodps;
+	}
+	if (foodps < 0) {
+		foodIncome.style.color = 'red';
+	} else if (foodps === 0) {
+		foodIncome.style.color = '#ffe000';
+	} else if (foodthr / foodps > 1000) {
+		foodIncome.style.color = '#ffe000';
+	} else {
+		foodIncome.style.color = '#e0e0e0';
+	}
 	if (pop >= popCap) {
 		curPop.style.color = 'red';
 		maxPop.style.color = 'red';
@@ -55,10 +87,7 @@ function incrementResources() {
 		curPop.style.color = '#e0e0e0';
 		maxPop.style.color = '#e0e0e0';
 	}
-	wood += woodps / 4;
-	if (wood > woodCap) {
-		wood = woodCap;
-	}
+	
 	curWood.textContent = Math.round(wood);
 	maxWood.textContent = Math.round(woodCap);
 	woodIncome.textContent = woodps;
@@ -69,10 +98,7 @@ function incrementResources() {
 		curWood.style.color = '#e0e0e0';
 		maxWood.style.color = '#e0e0e0';
 	}
-	stone += stoneps / 4;
-	if (stone > stoneCap) {
-		stone = stoneCap;
-	}
+	
 	curStone.textContent = Math.round(stone);
 	maxStone.textContent = Math.round(stoneCap);
 	stoneIncome.textContent = stoneps;
@@ -86,3 +112,4 @@ function incrementResources() {
 	scienceIncome.textContent = science;
 }
 setInterval(incrementResources, 250);
+setInterval(displayResources, 250);
