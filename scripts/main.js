@@ -1,9 +1,6 @@
-var food = 0;
+var food = 1;
 var prod = 0;
 var prodpt = 1;
-var stone = 0;
-var stoneps = 1;
-var stoneCap = 100;
 var pop = 10;
 var popCap = 25;
 var science = 2;
@@ -26,11 +23,12 @@ var scienceIncome = document.querySelector('.science');
 scienceIncome.textContent = science;
 
 function incrementResources() {
+	pop += food / 20;
 	prod += prodpt;
 }
 
 function displayResources() {
-	curPop.textContent = pop;
+	curPop.textContent = Math.round(pop * 10) / 10;
 	maxPop.textContent = popCap;
 	foodIncome.textContent = Math.round(food * 10) / 10;
 	if (food < 0) {

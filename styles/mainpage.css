@@ -1,0 +1,34 @@
+html {
+	font-family: 'Roboto', sans-serif;
+	background-color: #202020;
+	color: #e0e0e0;
+}
+p {
+	font-size: 12px;
+	color: #c0c0c0;
+}
+h1 {
+	text-align: center;
+	font-size: 32px;
+	margin: 0;
+	padding: 10px 0;    
+	color: #ffffff;
+	border: 2px solid #e0e0e0;
+}
+.ddotty {
+	text-align: center;
+	font-size: 32px;
+	margin: 0;
+	padding: 0;    
+	color: #ffffff;
+	border: 2px solid #e0e0e0;
+}
+a {
+  text-decoration: none;
+}
+a:link {
+  color: #e0e0e0;
+}
+a:visited {
+  color: #e0e0e0;
+}
