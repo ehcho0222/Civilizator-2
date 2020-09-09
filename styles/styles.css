@@ -1,6 +1,11 @@
 html {
 	font-family: 'Roboto', sans-serif;
 	background-color: #202020;
+	color: #e0e0e0;
+}
+.container {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 p {
 	font-size: 12px;
@@ -24,7 +29,14 @@ h2 {
 	font-size: 24px;
 	margin: 0;
 	text-align: center;
-	padding: 8px 0;    
+	padding: 7px 0;    
+	color: #e0e0e0;
+}
+h3 {
+	font-size: 18px;
+	margin: 0;
+	text-align: center;
+	padding: 4px 0;    
 	color: #e0e0e0;
 }
 a:hover {
@@ -37,7 +49,7 @@ a:visited {
   color: #e0e0e0;
 }
 .resources {
-  width: 25%;
+  width: 95%;
   height: 500px;
   margin: 5px;
   padding: 5px;
@@ -82,9 +94,18 @@ th, td {
 	color: #e0e0e0;
 	padding: 3px;
 }
-.special {
+.populate {
 	color: #ffe000;
 }
-.basic {
-	color: #4080ff;
+.food {
+	color: #0080ff;
+}
+.prod {
+	color: #0080ff;
+}
+.sciences {
+	color: #0080ff;
+}
+.culture {
+	color: #0080ff;
 }

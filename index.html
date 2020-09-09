@@ -4,64 +4,71 @@
     <meta charset="utf-8">
 	<link href="styles/styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <title>백멍이 귀엽다</title>
+    <title>Civilizator II</title>
   </head>
   <body>
     <header>
-      <h1>백멍이 귀엽다</h1>
+      <h1>Civilizator 2</h1>
     </header>
-	<nav>
-       <a href=index.html>Home</a>
-    </nav>
 	<hr>
 	<main>
-	  <article class="resources">
-        <h2>Resources</h2>
+	  <div class="container">
+		<article class="resources">
+        <h2>Summary</h2>
 		<hr>
         <table>
-		  <caption>Resources Summary</caption>
+		  <caption>Resources</caption>
 		  <thead>
 			<tr>
 			  <th scope="col">Resource</th>
 			  <th scope="col">Quantity</th>
 			  <th scope="col">Cap</th>
-			  <th scope="col">Income</th>
+			  <th scope="col">Per turn</th>
 			</tr>
 		  </thead>
 		  <tbody>
 			<tr>
-			  <th class="special" scope="row">Population</th>
+			  <th class="populate" scope="row">Population(k)</th>
 			  <td class=curpop>10</td>
-			  <td class=maxpop>15</td>
+			  <td class=maxpop>25</td>
 			  <td>N/A</td>
 			</tr>
 			<tr>
-			  <th class="basic" scope="row">Food</th>
-			  <td class=curfood>1900</td>
-			  <td class=maxfood>1900</td>
+			  <th class="food" scope="row">Food</th>
+			  <td>N/A</td>
+			  <td>N/A</td>
 			  <td class=foodincome>1.50</td>
 			</tr>
 			<tr>
-			  <th class="basic" scope="row">Wood</th>
-			  <td class=curwood>765</td>
-			  <td class=maxwood>1100</td>
-			  <td class=woodincome>2.67</td>
-			</tr>
-			<tr>
-			  <th class="basic" scope="row">Stone</th>
-			  <td class=curstone>198</td>
-			  <td class=maxstone>1100</td>
-			  <td class=stoneincome>2.67</td>
-			</tr>
-			<tr>
-			  <th class="special" scope="row">Science</th>
+			  <th class="prod" scope="row">Production</th>
+			  <td class=curprod>765</td>
 			  <td>N/A</td>
+			  <td class=prodincome>2.67</td>
+			</tr>
+			<tr>
+			  <th class="sciences" scope="row">Science</th>
+			  <td class="cursci">N/A</td>
 			  <td>N/A</td>
 			  <td class=science>1.50</td>
+			</tr>
+			<tr>
+			  <th class="culture" scope="row">Culture</th>
+			  <td class="curcul">N/A</td>
+			  <td>N/A</td>
+			  <td class="cpt">1.50</td>
 			</tr>
 		  </tbody>
 		</table>
       </article>
+	  <article class="resources">
+        <h2>Commands</h2>
+		<hr>
+        <input type=button value="End Turn" class="endturn"> - Ends the current turn.
+		<hr>
+		<h3>Buildings</h3>
+		
+      </article>
+	  </div>
 	  <hr>
 	</main>
 	<footer>
