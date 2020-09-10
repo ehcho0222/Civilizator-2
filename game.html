@@ -31,7 +31,13 @@
 			  <th class="populate" scope="row">Population(k)</th>
 			  <td class=curpop>10</td>
 			  <td class=maxpop>25</td>
-			  <td>N/A</td>
+			  <td class=poppt>N/A</td>
+			</tr>
+			<tr>
+			  <th class="populate" scope="row">Military(k)</th>
+			  <td class=curarmy>10</td>
+			  <td class=maxarmy>25</td>
+			  <td class=armypt>N/A</td>
 			</tr>
 			<tr>
 			  <th class="food" scope="row">Food</th>
@@ -69,10 +75,17 @@
 	  <article class="resources">
         <h2>Commands</h2>
 		<hr>
-        <input type=button value="End Turn" class="endturn"> - Ends the current turn.
+        <input type=button value="End Turn" class="endturn">
+		<p>Ends the current turn.</p>
 		<hr>
-		<h3>Buildings</h3>
-		
+		<input type=button value="Fund Researchers" class="buyscience">
+		<p class=scibuyinfo>Spend 20 Gold to buy 2 science</p>
+		<hr>
+		<input type=button value="Train Armies" class="buyarmy">
+		<p class=armybuyinfo>Spend 20 Gold to buy 1k military</p>
+		<hr>
+		<input type=button value="Buy Slaves" class="buypop">
+		<p class=popbuyinfo>Spend 20 Gold to buy 2k population</p>
       </article>
 	  </div>
 	</main>

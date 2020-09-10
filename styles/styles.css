@@ -8,11 +8,11 @@ html {
 	grid-template-columns: 1fr 1fr;
 }
 p {
-	font-size: 12px;
+	font-size: 13px;
 	color: #c0c0c0;
 }
 span {
-	font-size: 12px;
+	font-size: 13px;
 	color:#202020;
 	background-color:#ffff00;
 	border:1px solid #e0e0e0;
@@ -95,9 +95,6 @@ th, td {
 	padding: 3px;
 }
 .populate {
-	color: #ffe000;
-}
-.military {
 	color: #ffe000;
 }
 .food {
