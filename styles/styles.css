@@ -97,6 +97,9 @@ th, td {
 .populate {
 	color: #ffe000;
 }
+.military {
+	color: #ffe000;
+}
 .food {
 	color: #00c0ff;
 }
@@ -107,5 +110,8 @@ th, td {
 	color: #00c0ff;
 }
 .culture {
+	color: #00c0ff;
+}
+.gold {
 	color: #00c0ff;
 }

@@ -84,6 +84,13 @@ function displayResources() {
 	curGold.textContent = Math.round(gold);
 	maxGold.textContent = Math.round(goldCap);
 	goldIncome.textContent = Math.round(goldpt);
+	if (gold >= goldCap * 0.9) {
+		curGold.style.color = '#ffe000';
+		maxGold.style.color = '#ffe000';
+	} else {
+		curGold.style.color = '#e0e0e0';
+		maxGold.style.color = '#e0e0e0';
+	}
 	curEra.textContent = eras[era];
 }
 
