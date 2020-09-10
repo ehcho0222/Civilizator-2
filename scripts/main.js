@@ -7,6 +7,9 @@ var science = 1;
 var scipt = 1;
 var culture = 1;
 var culpt = 1;
+var gold = 10;
+var goldCap = 100;
+var goldpt = 10;
 var era = 0;
 var eras = ['Ancient Era', 'Classical Era', 'Medieval Era', 'Renaissance Era', 'Industrial Era', 'Modern Era', 'Future'];
 var buildingBonus = [0, 0, 0, 0, 0, 0];
@@ -31,12 +34,25 @@ var curCulture = document.querySelector('.curcul');
 curCulture.textContent = culture;
 var cultureIncome = document.querySelector('.cpt');
 cultureIncome.textContent = culpt;
+var curGold = document.querySelector('.curgold');
+curGold.textContent = culture;
+var maxGold = document.querySelector('.maxgold');
+curGold.textContent = goldCap;
+var goldIncome = document.querySelector('.gpt');
+goldIncome.textContent = goldpt;
 
 function incrementResources() {
 	pop += food / 20;
+	if (pop > popCap) {
+		pop = popCap;
+	}
 	prod += prodpt;
 	science += scipt;
 	culture += culpt;
+	gold += goldpt;
+	if (gold > goldCap) {
+		gold = goldCap;
+	}
 }
 
 function displayResources() {
@@ -65,14 +81,18 @@ function displayResources() {
 	scienceIncome.textContent = Math.round(scipt * 10) / 10;
 	curCulture.textContent = Math.round(culture * 10) / 10;
 	cultureIncome.textContent = Math.round(culpt * 10) / 10;
+	curGold.textContent = Math.round(gold);
+	maxGold.textContent = Math.round(goldCap);
+	goldIncome.textContent = Math.round(goldpt);
 	curEra.textContent = eras[era];
 }
 
 function calcResources() {
 	food = 10 - (pop / 10) + buildingBonus[0];
-	prodpt = 2 + buildingBonus[1];
-	scipt = 1 + buildingBonus[2];
-	culpt = 1 + buildingBonus[3];
+	prodpt = 1 + (pop / 10) + buildingBonus[1];
+	scipt = 0.5 + (pop / 20) + buildingBonus[2];
+	culpt = 0.5 + (pop / 20) + buildingBonus[3];
+	goldpt = 10 + (pop * buildingBonus[4]);
 }
 
 function nextTurn() {
