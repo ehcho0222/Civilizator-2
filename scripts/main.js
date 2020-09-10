@@ -17,12 +17,12 @@ var goldpt = 10;
 var era = 0;
 var eras = ['Ancient Era', 'Classical Era', 'Medieval Era', 'Renaissance Era', 'Industrial Era', 'Modern Era', 'Atomic Era', 'Future'];
 var buildingBonus = [0, 0, 0, 0, 0, 0];
-var commCosts = [20, 150, 800, 3500, 15000, 60000, 200000, 600000];
+var commCosts = [40, 300, 1500, 7000, 30000, 120000, 400000, 1200000];
 var comm1Effect = [2, 12, 60, 250, 1000, 3500, 10000, 30000];
 var comm2Effect = [1, 5, 25, 100, 400, 1500, 4000, 12000];
 var comm3Effect = [2, 10, 50, 200, 800, 3000, 8000, 24000];
 var turn = 0;
-var maxTurn = 150;
+var maxTurn = 160;
 var score = 0;
 var eventStringsAncient = ['A treasure was found.', 'There was an invasion of barbarians.', 'A poet wrote about your civilization.', 'One of your researchers made a great discovery.', 'Barbarians stole some of your gold.'];
 var eventStringsClassical = ['A treasure was found.', 'There was an outbreak of plague.', 'A poet wrote about your civilization.', 'One of your researchers made a great discovery.', 'Citizens revolted and stole gold from the government.'];
@@ -80,6 +80,13 @@ curTurn.textContent = '0 / 150';
 
 var curScore = document.querySelector('.curscore');
 curScore.textContent = 15;
+
+var sciBuyInfo = document.querySelector('.scibuyinfo');
+sciBuyInfo.textContent = 'Spend 20 Gold to buy 2 Science';
+var armyBuyInfo = document.querySelector('.armybuyinfo');
+armyBuyInfo.textContent = 'Spend 20 Gold to buy 1k Military';
+var popBuyInfo = document.querySelector('.popbuyinfo');
+popBuyInfo.textContent = 'Spend 20 Gold to buy 2k Population';
 
 function incrementResources() {
 	turn += 1;
@@ -164,6 +171,9 @@ function displayResources() {
 		curTurn.style.color = '#e0e0e0';
 	}
 	curScore.textContent = Math.round(score);
+	sciBuyInfo.textContent = 'Spend ' + commCosts[era] + ' Gold to buy ' + comm1Effect[era] + ' Science';
+	armyBuyInfo.textContent = 'Spend ' + commCosts[era] + ' Gold to buy ' + comm2Effect[era] + 'k Military';
+	popBuyInfo.textContent = 'Spend ' + commCosts[era] + ' Gold to buy ' + comm3Effect[era] + 'k Population';
 }
 
 function calcResources() {
