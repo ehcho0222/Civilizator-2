@@ -50,7 +50,7 @@ a:visited {
 }
 .resources {
   width: 95%;
-  height: 500px;
+  height: 575px;
   margin: 5px;
   padding: 5px;
   border: 3px solid #e0e0e0;
@@ -111,4 +111,10 @@ th, td {
 }
 .gold {
 	color: #00c0ff;
+}
+.turn {
+	color: #00ff00;
+}
+.score {
+	color: #00ff00;
 }

@@ -15,12 +15,23 @@ var gold = 10;
 var goldCap = 100;
 var goldpt = 10;
 var era = 0;
-var eras = ['Ancient Era', 'Classical Era', 'Medieval Era', 'Renaissance Era', 'Industrial Era', 'Modern Era', 'Future'];
+var eras = ['Ancient Era', 'Classical Era', 'Medieval Era', 'Renaissance Era', 'Industrial Era', 'Modern Era', 'Atomic Era', 'Future'];
 var buildingBonus = [0, 0, 0, 0, 0, 0];
-var commCosts = [20, 150, 800, 3500, 15000, 60000, 200000];
-var comm1Effect = [2, 12, 60, 250, 1000, 3500, 10000];
-var comm2Effect = [1, 5, 25, 100, 400, 1500, 4000];
-var comm3Effect = [2, 10, 50, 200, 800, 3000, 8000];
+var commCosts = [20, 150, 800, 3500, 15000, 60000, 200000, 600000];
+var comm1Effect = [2, 12, 60, 250, 1000, 3500, 10000, 30000];
+var comm2Effect = [1, 5, 25, 100, 400, 1500, 4000, 12000];
+var comm3Effect = [2, 10, 50, 200, 800, 3000, 8000, 24000];
+var turn = 0;
+var maxTurn = 150;
+var score = 0;
+var eventStringsAncient = ['A treasure was found.', 'There was an invasion of barbarians.', 'A poet wrote about your civilization.', 'One of your researchers made a great discovery.', 'Barbarians stole some of your gold.'];
+var eventStringsClassical = ['A treasure was found.', 'There was an outbreak of plague.', 'A poet wrote about your civilization.', 'One of your researchers made a great discovery.', 'Citizens revolted and stole gold from the government.'];
+var eventStringsMedieval = ['A miner found a rare jewel.', 'There was an outbreak of plague.', 'A poet wrote about your civilization.', 'One of your researchers made a great discovery.', 'Citizens revolted and stole gold from the government.'];
+var eventStringsRenaissance = ['A miner found a rare jewel.', 'There was an outbreak of plague.', 'A new influential book was published.', 'One of your scientists proposed a new theory.', 'Citizens revolted and stole gold from the government.'];
+var eventStringsIndustrial = ['Our industries are growing.', 'A tornado hit your city.', 'A new influential book was published.', 'One of your scientists proposed a new theory.', 'Foreign Spies managed to steal your gold.'];
+var eventStringsModern = ['Our industries are growing.', 'A tornado hit your city.', 'A new musical started.', 'One of your scientists proposed a new theory.', 'Foreign Spies managed to steal your gold.'];
+var eventStringsAtomic = ['Our industries are growing.', 'Terrorists attacked your city.', 'A new radio show started.', 'A new element was found.', 'Foreign Spies managed to steal your gold.'];
+var eventStringsFuture = ['Our industries are growing.', 'Terrorists attacked your city.', 'A new Pokemon game was released.', 'A new particle was found.', 'Foreign Spies managed to steal your gold.'];
 
 var curEra = document.querySelector('h1');
 era.textContent = 'Ancient Era';
@@ -64,7 +75,14 @@ curGold.textContent = goldCap;
 var goldIncome = document.querySelector('.gpt');
 goldIncome.textContent = goldpt;
 
+var curTurn = document.querySelector('.curturn');
+curTurn.textContent = '0 / 150';
+
+var curScore = document.querySelector('.curscore');
+curScore.textContent = 15;
+
 function incrementResources() {
+	turn += 1;
 	pop += food / 10;
 	if (pop > popCap) {
 		pop = popCap;
@@ -137,6 +155,15 @@ function displayResources() {
 		maxGold.style.color = '#e0e0e0';
 	}
 	curEra.textContent = eras[era];
+	curTurn.textContent = turn + ' / ' + maxTurn;
+	if (maxTurn - turn <= 10) {
+		curTurn.style.color = 'red';
+	} else if (maxTurn - turn <= 20) {
+		curTurn.style.color = '#ffe000';
+	} else {
+		curTurn.style.color = '#e0e0e0';
+	}
+	curScore.textContent = Math.round(score);
 }
 
 function calcResources() {
@@ -148,9 +175,54 @@ function calcResources() {
 	armyRealCap = Math.min(pop, armyCap);
 }
 
+function calcScore() {
+	score = pop + (army * 1.2);
+}
+
+function randomEvent() {
+	var index = Math.round(Math.random() * 5 - 0.5);
+	var tmp;
+	if (era === 0) {
+		tmp = eventStringsAncient[index];
+	} else if (era === 1) {
+		tmp = eventStringsClassical[index];
+	} else if (era === 2) {
+		tmp = eventStringsMedieval[index];
+	} else if (era === 3) {
+		tmp = eventStringsRenaissance[index];
+	} else if (era === 4) {
+		tmp = eventStringsIndustrial[index];
+	} else if (era === 5) {
+		tmp = eventStringsModern[index];
+	} else if (era === 6) {
+		tmp = eventStringsAtomic[index];
+	} else if (era === 7) {
+		tmp = eventStringsFuture[index];
+	}
+	if (index === 0) {
+		gold += goldpt * 1.25;
+		alert(tmp + '\n+' + Math.round(goldpt * 1.25) + ' Gold');
+	} else if (index === 1) {
+		pop *= 0.8;
+		army *= 0.8;
+		alert(tmp + '\n-' + Math.round(pop * 0.25) + 'k Population\n-' + Math.round(army * 0.25) + 'k Military');
+	} else if (index === 2) {
+		culture += culpt;
+		alert(tmp + '\n+' + Math.round(culpt) + ' Culture');
+	} else if (index === 3) {
+		science += scipt * 0.85;
+		alert(tmp + '\n+' + Math.round(scipt * 0.85) + ' Science');
+	} else if (index === 4) {
+		gold *= 0.75;
+		alert(tmp + '\n-' + Math.round(gold * 0.333) + ' Gold');
+	}
+}
+
 function nextTurn() {
 	incrementResources();
+	randomEvent();
 	calcResources();
+	calcScore();
 	displayResources();
 }
 
@@ -159,6 +231,7 @@ function fundScientist() {
 		gold -= commCosts[era];
 		science += comm1Effect[era];
 		calcResources();
+		calcScore();
 		displayResources();
 	}
 }
@@ -171,6 +244,7 @@ function trainArmy() {
 			army = armyRealCap;
 		}
 		calcResources();
+		calcScore();
 		displayResources();
 	}
 }
@@ -183,6 +257,7 @@ function buySlave() {
 			pop = popCap;
 		}
 		calcResources();
+		calcScore();
 		displayResources();
 	}
 }
