@@ -1,11 +1,11 @@
-var food = 1;
+var food = 10;
 var prod = 0;
 var prodpt = 1;
 var pop = 10;
 var popCap = 25;
 var science = 2;
 var era = 0;
-var eras = ['Ancient Era', 'Classical Era', 'Medieval Era', 'Renaissance', 'Industrial Era', 'Modern Era', 'Future'];
+var eras = ['Ancient Era', 'Classical Era', 'Medieval Era', 'Renaissance Era', 'Industrial Era', 'Modern Era', 'Future'];
 
 var curEra = document.querySelector('h1');
 era.textContent = 'Ancient Era';
@@ -35,7 +35,7 @@ function displayResources() {
 		foodIncome.style.color = 'red';
 	} else if (food === 0) {
 		foodIncome.style.color = '#ffe000';
-	} else if (pop / food > 0.6) {
+	} else if (food / pop < 0.6) {
 		foodIncome.style.color = '#ffe000';
 	} else {
 		foodIncome.style.color = '#e0e0e0';
